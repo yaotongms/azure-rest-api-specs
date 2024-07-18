@@ -1090,19 +1090,21 @@
     "RouteMatrixResponse": {
       "description": "This object is returned from a successful call.",
       "type": "object",
+      "required": [
+        "type",
+        "geometry",
+        "properties"
+      ],
       "properties": {
         "type": {
-          "$ref": "#/definitions/FeatureTypeEnum"
+          "$ref": "#/definitions/FeaturesItemTypeEnum"
         },
-        "features": {
-          "type": "array",
-          "description": "`GeoJSON` feature object that contains Geometry object and additional properties. Refer to [RFC 7946, Section 3.2](https://www.rfc-editor.org/rfc/rfc7946#section-3.2) for details.",
-          "items": {
-            "$ref": "#/definitions/RouteMatrixFeatureItem"
-          }
+        "geometry": {
+          "description": "The geometry object is null",
+          "type": "object"
         },
-        "summary": {
-          "$ref": "#/definitions/RouteMatrixSummary"
+        "properties": {
+          "$ref": "#/definitions/RouteMatrixFeatureProperties"
         }
       }
     },
@@ -3195,30 +3197,25 @@
         }
       }
     },
-    "RouteMatrixFeatureItem": {
-      "type": "object",
-      "description": "GeoJSON feature object that contains Geometry object and additional properties of the route.",
-      "allOf": [
-        {
-          "type": "object",
-          "description": "GeoJSON feature object that contains Geometry object and additional properties of the route.",
-          "properties": {
-            "type": {
-              "$ref": "#/definitions/FeaturesItemTypeEnum"
-            },
-            "geometry": {
-              "$ref": "../../../Common/preview/1.0/common.json#/definitions/GeoJsonMultiPoint"
-            },
-            "properties": {
-              "$ref": "#/definitions/RouteMatrixFeatureProperties"
-            }
-          }
-        }
-      ]
-    },
     "RouteMatrixFeatureProperties": {
       "description": "Route Matrix properties.",
       "type": "object",
+      "properties": {
+        "summary": {
+          "$ref": "#/definitions/RouteMatrixSummary"
+        },
+        "matrix": {
+          "description": "The matrix of route results.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RouteMatrixItemResult"
+          }
+        }
+      }
+    },
+    "RouteMatrixItemResult": {
+      "type": "object",
+      "description": "Route Matrix item result",
       "properties": {
         "originIndex": {
           "description": "Index of the origin point",
