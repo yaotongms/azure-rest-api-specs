@@ -1,28 +1,38 @@
 import "@azure-tools/typespec-client-generator-core";
 import "./main.tsp";
-import "@typespec/versioning"
+import "@typespec/versioning";
 
 using Azure.ClientGenerator.Core;
 
 using KeyVault;
 
-@TypeSpec.Versioning.useDependency(Versions[`v7.6_preview.1`])
+@TypeSpec.Versioning.useDependency(Versions.`v7.6_preview.1`)
 namespace Customizations {
   @client(
     { name: "SecretClient", service: KeyVault }, "javascript"
   )
   interface SecretClient {
-    backupSecret is backupSecret,
-    beginDeleteSecret is deleteSecret,
-    beginRecoverDeletedSecret is restoreSecret,
-    getDeletedSecret is getDeletedSecret,
-    getSecret is getSecret,
-    listDeletedSecrets is getDeletedSecrets,
-    listPropertiesOfSecrets is getSecrets,
-    listPropertiesOfSecretVersions is getSecretVersions,
-    purgeDeletedSecret is purgeDeletedSecret,
-    restoreSecretBackup is restoreSecret,
-    setSecret is setSecret,
-    updateSecretProperties is updateSecret,
+    #suppress "@azure-tools/typespec-azure-core/use-standard-operations" ""
+    backupSecret is backupSecret;
+    #suppress "@azure-tools/typespec-azure-core/use-standard-operations" ""
+    beginDeleteSecret is deleteSecret;
+    #suppress "@azure-tools/typespec-azure-core/use-standard-operations" ""
+    beginRecoverDeletedSecret is restoreSecret;
+    #suppress "@azure-tools/typespec-azure-core/use-standard-operations" ""
+    getDeletedSecret is getDeletedSecret;
+    #suppress "@azure-tools/typespec-azure-core/use-standard-operations" ""
+    getSecret is getSecret;
+    listDeletedSecrets is getDeletedSecrets;
+    listPropertiesOfSecrets is getSecrets;
+    #suppress "@azure-tools/typespec-azure-core/use-standard-operations" ""
+    listPropertiesOfSecretVersions is getSecretVersions;
+    #suppress "@azure-tools/typespec-azure-core/use-standard-operations" ""
+    purgeDeletedSecret is purgeDeletedSecret;
+    #suppress "@azure-tools/typespec-azure-core/use-standard-operations" ""
+    restoreSecretBackup is restoreSecret;
+    #suppress "@azure-tools/typespec-azure-core/use-standard-operations" ""
+    setSecret is setSecret;
+    #suppress "@azure-tools/typespec-azure-core/use-standard-operations" ""
+    updateSecretProperties is updateSecret;
   }
 }
