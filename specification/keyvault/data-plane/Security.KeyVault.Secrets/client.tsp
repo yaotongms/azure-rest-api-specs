@@ -15,9 +15,9 @@ namespace Customizations {
     #suppress "@azure-tools/typespec-azure-core/use-standard-operations" ""
     backupSecret is backupSecret;
     #suppress "@azure-tools/typespec-azure-core/use-standard-operations" ""
-    beginDeleteSecret is deleteSecret;
+    deleteSecret is deleteSecret;
     #suppress "@azure-tools/typespec-azure-core/use-standard-operations" ""
-    beginRecoverDeletedSecret is restoreSecret;
+    restoreSecret is restoreSecret;
     #suppress "@azure-tools/typespec-azure-core/use-standard-operations" ""
     getDeletedSecret is getDeletedSecret;
     #suppress "@azure-tools/typespec-azure-core/use-standard-operations" ""
